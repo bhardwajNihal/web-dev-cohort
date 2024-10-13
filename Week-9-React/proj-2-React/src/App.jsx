@@ -4,6 +4,25 @@ import { FoodComponents } from "./React-arrayMap"
 
 function App() {
   
+  
+
+  return (
+    //each component has their own state variable, that changes , and components get re-rendered separately
+    <div >
+
+        < Posts/>
+
+        {/* <ToggleMessage /> */}
+        
+        <Notification />
+    </div>
+    
+  )
+
+}
+// components
+
+function Posts(){
   const Initialposts = [
     {
       name: "Nihal Bhardwaj",
@@ -41,21 +60,12 @@ function App() {
     image={post.image}
     description={post.description} /> )
 
-  return (
-    //each component has their own state variable, that changes , and components get re-rendered separately
-    <div >
-
-        <div>{PostComponents}</div>
-        <button onClick={addPosts} style={{position:"fixed", top:100, left:200, padding:10, borderRadius:10}}>Add posts</button>
-
-        {/* <ToggleMessage /> */}
-        <Notification />
+    return <div>
+      <div>{PostComponents}</div>
+      <button onClick={addPosts} style={{position:"fixed", top:100, left:200, padding:10, borderRadius:10}}>Add posts</button>
     </div>
-    
-  )
-
 }
-// components
+
 
 function ToggleMessage(){
 

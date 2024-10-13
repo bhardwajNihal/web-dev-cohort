@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+// Adding element to the parent : 
+    const body = document.querySelector("body");
+
+    body.append("hello world")            //append lets us add both strings and element to the parent
+
+    let newDiv = document.createElement("div");
+    newDiv.innerHTML = "<h1>helloo</h1>"
+    body.appendChild(newDiv)                    //appendchild only adds elements - divs, a , span etc
+
+
+// console.log(newDiv.innerText);          //only prints the text that's visible on the webpage
+// console.log(newDiv.textContent);            //prints the entire texts along with the spaces and other attributes
+
+let div2 = document.createElement("div");
+// div2.innerText = "<h3>this is added</h3>"        //the text got added along with the tag
+
+// div2.innerHTML = "<h3>this is added</h3>"           // adds the text as a heading
+// body.append(div2)           
+
+
+// another way   : considered more secure way of doing so, i.e. adding an element with an attribute
+    let heading = document.createElement("h2")
+    heading.innerText = "this heading is explicit";
+    div2.append(heading)
+    body.append(div2)
+
+
+// removing element : 
+
+    div2.remove()           // completely gone
+    body.append(div2)           //added again
+
+    body.removeChild(newDiv)
+
+
+// we can also have access to the attributes of an element by getAttribute method 
+// can also modify it by setAttribute method 
+
+</script>
+
+
+</body>
+</html>

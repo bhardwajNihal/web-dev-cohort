@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "todo": "improve everyday",
+    "isdone": false
+  },
+  {
+    "id": 2,
+    "todo": "be the greatest developer in the world",
+    "isdone": true
+  },
+  {
+    "id": 3,
+    "todo": "Reach 3000 at code forces",
+    "isdone": false
+  }
+]

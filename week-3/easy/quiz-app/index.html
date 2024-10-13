@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .questionbox{
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(34, 34, 34);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .question{
+            height: 200px;
+            width: 300px;
+            background-color: aqua;
+            padding: 20px;
+            display: none;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        .startQuiz{
+            padding: 10px;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    
+    
+   <div class="questionbox">
+
+        <button class="startQuiz">Start Quiz</button>
+
+        <div class="question">
+            
+        </div>
+
+   </div>
+
+
+<script>
+
+    let quesArr =[{
+    "question": "Which language runs in a web browser?",
+    "a": "Java",
+    "b": "C",
+    "c": "Python",
+    "d": "JavaScript",
+    "correct": "JavaScript",
+},
+{
+    "question": "What does CSS stand for?",
+    "a": "Central Style Sheets",
+    "b": "Cascading Style Sheets",
+    "c": "Cascading Simple Sheets",
+    "d": "Cars SUVs Sailboats",
+    "correct": "Cascading Style Sheets",
+},
+{
+    "question": "What does HTML stand for?",
+    "a": "Hypertext Markup Language",
+    "b": "Hypertext Markdown Language",
+    "c": "Hyperloop Machine Language",
+    "d": "Helicopters Terminals Motorboats Lamborginis",
+    "correct": "Hypertext Markup Language",
+},
+{
+    "question": "What year was JavaScript launched?",
+    "a": "1996",
+    "b": "1995",
+    "c": "1994",
+    "d": "none of the above",
+    "correct": "1995",
+},
+]
+
+
+    let start = document.querySelector(".startQuiz")
+    let question = document.querySelector(".question");
+    let currentQuesId = 0;
+    let currentScore = 0;
+
+    function displayQues(currentQuesId){
+        question.style.display = "block"
+        if(currentQuesId == quesArr.length-1){                //To tackle the last question
+
+            question.innerHTML = `<h3>${quesArr[currentQuesId].question}</h3>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].a}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].a}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].b}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].b}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].c}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].c}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].d}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].d}</label>
+            </div>
+            <button class="nextbutt">Submit</button>`
+
+        }
+
+        else{
+            question.innerHTML = `<h3>${quesArr[currentQuesId].question}</h3>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].a}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].a}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].b}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].b}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].c}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].c}</label>
+            </div>
+            <div class="option">
+                <input type="radio" value="${quesArr[currentQuesId].d}" id="opt" name="opt">
+                <label for="q1">${quesArr[currentQuesId].d}</label>
+            </div>
+            <button class="nextbutt">next</button>`
+        }
+
+
+        // handling, marked answers and calling next question.
+        let next = document.querySelector(".nextbutt");
+        next.style.padding = 3 + "px";
+
+        next.addEventListener("click",()=>{
+            manageScore(currentQuesId);
+            if(currentQuesId == quesArr.length-1) endtest();
+            else {
+            displayQues(++currentQuesId)
+            }
+        })
+    }
+
+    function manageScore(id){
+        let selectedOption = document.querySelector(`input[name="opt"]:checked`)      //selecting the checked option
+        if(selectedOption && selectedOption.value === quesArr[id].correct) currentScore++;
+    }
+
+    function endtest(){
+        question.innerHTML = `<h3>test completed!!! <br/> your final score is : ${currentScore} / ${quesArr.length}</h3>`
+        question.innerHTML += `<button class="restart">Retake Test</button>`
+        document.querySelector(".restart").addEventListener("click",()=>{
+            currentQuesId=0;
+            currentScore =0;
+            displayQues(currentQuesId);
+        })
+    }
+
+    start.addEventListener("click",()=>{
+        displayQues(currentQuesId)
+    });
+
+    
+
+
+</script>
+
+</body>
+</html>

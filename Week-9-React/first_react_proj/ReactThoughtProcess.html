@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="buttonParent">
+
+    </div>
+</body>
+
+<script>
+
+// Simple DOM Logic : 
+    // const btn = document.querySelector("#btn")
+    // let counterValue = btn.innerHTML.split(" ")[1];
+    // console.log(counterValue);
+    // btn.addEventListener("click", increaseCounter);
+    // function increaseCounter(){
+    //     console.log(counterValue);
+    //     ++counterValue;
+    //     btn.innerHTML = `count ${counterValue}`
+    // }
+    
+
+
+// React Like functionalities
+
+    // defining state : the dynamic part
+        let state = {
+            count : 0,
+            color : "blue"
+        }
+
+    // defining the Component : the static part
+        function Component(count,color){
+            let btn = document.createElement("button");
+            btn.setAttribute("onclick","UpdateState()");
+            btn.setAttribute("style", `background-color : ${color} ; color : white`)
+            btn.innerHTML = `count ${count}`;
+            return btn;
+        }
+
+
+// updating state on being clicked
+    function UpdateState(){
+        state.count++;
+        renderButton();
+    }
+
+// Rendering the button    : this part is taken Care of by REACT
+    function renderButton(){
+        document.querySelector(".buttonParent").innerHTML = "";
+        const btnEle = Component(state.count,state.color);
+        document.querySelector(".buttonParent").appendChild(btnEle);
+    }
+
+renderButton()
+
+
+
+
+</script>
+</html>

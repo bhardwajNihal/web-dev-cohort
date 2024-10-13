@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Builder</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .mainbody{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            padding: 20px;
+            gap: 10px;
+        }
+        .fieldsetter{
+            width: 40%;
+            height: 100%;
+            border: solid 1px grey;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 2rem;
+        }
+        .previewtab{
+            width: 60%;
+            height: 100%;
+            border: solid 1px grey;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 2rem;
+        }
+        #select-o,#label-i{
+            height: 30px;
+            width: 100%;
+        }
+        #select-h,#label-h{
+            margin-top: 2rem;
+        }#create-button{
+            width: 100%;
+            height: 30px;
+            margin-top: 2rem;
+            background-color: rgb(0, 68, 255);
+            color: #fff;
+            cursor: pointer;
+        }
+        #preview-label{
+            font-size: large;
+        }
+        #preview-input{
+            width: 70%;
+            margin-left: 0.5rem;
+            height: 30px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="mainbody">
+    <div class="fieldsetter">
+        <h2>Choose Your Input fields Here </h2>
+        <h4 id="select-h">Select field type</h4>
+        <select name="feild-selector" id="select-o">
+            <option value="text">Text Input</option>
+            <option value="number">Number Input</option>
+            <option value="date">Date Input</option>
+            <option value="color">Color Input</option>
+            <option value="email">Email Input</option>
+            <option value="file">Upload file</option>
+            <option value="Password">Password Input</option>
+            <option value="url">url Input</option>
+        </select>
+
+        <h4 id="label-h">field label</h4>
+        <input type="text" placeholder="enter field label" id="label-i">
+        <button id="create-button">Add field</button>
+
+    </div>
+    <div class="previewtab">
+        <h2>Here's your preview</h2>
+
+    </div>
+</div>
+
+<script>
+
+    let creaebutton = document.querySelector("#create-button");
+    creaebutton.addEventListener("click",()=>{
+
+        let inputvalue = document.querySelector("#select-o").value;
+        let inputlabel = document.querySelector("#label-i").value;
+        let newInput = document.createElement("input");
+
+        document.querySelector(".previewtab").innerHTML += `
+        <div class="input-div">
+            <label for="preview-input" id="preview-label">${inputlabel} : </label>
+            <input type="${inputvalue}" placeholder="enter ${inputlabel}" id="preview-input">
+        </div>`
+
+    })
+
+    
+
+</script>
+
+</body>
+</html>

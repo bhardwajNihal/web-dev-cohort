@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- images : https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg -->
+
+<script>
+    let categoryArray = ['overgrow', 'blaze', 'torrent', 'shield-dust', 'shed-skin', 'compound-eyes', 'swarm', 'keen-eye', 'run-away', 'intimidate', 'static', 'sand-veil', 'poison-point', 'cute-charm', 'flash-fire', 'inner-focus', 'chlorophyll', 'effect-spore', 'pickup', 'limber', 'damp', 'vital-spirit', 'water-absorb', 'synchronize', 'guts', 'clear-body', 'rock-head', 'oblivious', 'magnet-pull', 'thick-fat', 'stench', 'shell-armor', 'levitate', 'cursed-body', 'insomnia', 'hyper-cutter', 'soundproof', 'own-tempo', 'lightning-rod', 'natural-cure', 'early-bird', 'swift-swim', 'illuminate', 'flame-body', 'volt-absorb', 'trace', 'immunity', 'pressure', 'hustle', 'sturdy', 'speed-boost']
+    async function getdata() {
+        for(let i = 1; i<2 ;i++){
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        const data = await response.json();
+
+        // console.log(i,data.name," ~~> ",data.abilities[0].ability.name)
+        // if(data.abilities[0].ability.name == categoryArray[0]) console.log(data.name);
+        console.log(data.moves[1])
+        
+    }
+}
+    getdata()
+    
+    
+    
+</script>
+
+</body>
+</html>

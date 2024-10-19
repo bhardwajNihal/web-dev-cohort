@@ -46,7 +46,7 @@ function CardComponent({innerContent}){
   </div>
 }
 
-// this function defines the content or state of the todo component, and the login to add new ones
+// this function defines the content or state of the todo component, and the logic to add new ones
   function AddTodosComponent(){
     const todolist = [
       {title:"hit the gym", isdone:false},  

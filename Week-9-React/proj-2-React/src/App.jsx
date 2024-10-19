@@ -159,7 +159,7 @@ function ToggleMessage(){
     );
   }
 
-// Dependency Array:
+// understanding Dependency Array:
   function Count(){
     
     const [count1, setcount1] = useState(0)
@@ -237,6 +237,6 @@ function Navbar(){
   {currentTab &&<div style={{width:500,backgroundColor:"#ddd", margin:10}}><h2>title :{(IsLoading) ? "loading..." : responseData} </h2></div>}
   </div>
 }
-  
+
 
 export default App

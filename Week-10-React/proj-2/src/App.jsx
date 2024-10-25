@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { Grandparent } from "./Context"
+import { LightComponent } from "./LightComponent"
 
 function App() {
 
   return (
     <div>
-      {/* <LightComponent/>      */}
+      <LightComponent/>     
 
-      <Grandparent/>
+      {/* <Grandparent/> */}
     </div>
   )
 }

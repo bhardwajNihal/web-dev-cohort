@@ -7,13 +7,13 @@ const messageContext = createContext()
 
 export function Grandparent(){
 
-    // setting up the value to be passed as props
+    // setting up the value for the context
     const messages = {
     message1 : "keep this blessing of 1000 rupee",
     fuddu : "Don't take it from them"
     }
 
-// setting up the context provider
+// setting up the context provider, w
     return <messageContext.Provider value={messages}>
         <Parent/>
         </messageContext.Provider>
@@ -34,6 +34,6 @@ function Children(){
     const {message1} = useContext(messageContext)
 
     return <div>
-        <h2 style={{backgroundColor:"red", color : "white", fontWeight:"bolder"}}>{message1}</h2>
+        <h2 style={{backgroundColor:"red", color : "white"}}>{message1}</h2>
     </div>
 }

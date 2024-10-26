@@ -102,7 +102,7 @@ function App() {
 //     return <div>
 //       <h3>Count : {count}</h3>
 //       {/* Assign reference */}
-//       <button onClick={Increment} ref={btnRef} style={{padding:5, margin:5, color:'white', backgroundColor:"blue"}}>Add</button>
+//       <button ref={btnRef} onClick={Increment}style={{padding:5, margin:5, color:'white', backgroundColor:"blue"}}>Add</button>
 //       <button onClick={ChangeColor} style={{padding:5}}>Change color</button>
 //     </div>
 //   }

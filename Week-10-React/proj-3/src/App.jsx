@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import { usePostComponent } from "./GetPostsComp";
 import { useFetch } from "./useFetchHook";
+import { GrandparentCounter } from "./Recoil_SM";
+
 
 function App(){
 
@@ -11,6 +13,7 @@ function App(){
   {/* <PostComponent/> */}
   {/* <DataComponent/> */}
   <PrevValue/>
+  {/* <GrandparentCounter/> */}
   </>
 }
 
@@ -74,17 +77,18 @@ function DataComponent(){
   );
 }
 
+
 // defining the usePrev
 function usePrev(value){
   const ref = useRef("**");
-  console.log("ref before useEffect",ref.current);
+  console.log("value stored in ref for now : ", ref.current);
   
   useEffect(()=>{
     ref.current = value;
-    console.log("ref inside useEffect runs : ", ref.current)
+    console.log("ref updated to : ", value)
   },[value])
 
- console.log("ref after useEffect",ref.current);
+ console.log("value returned : ",ref.current);
 
   return ref.current
 }

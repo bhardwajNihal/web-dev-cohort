@@ -17,4 +17,4 @@ export function useFetch(url){
     },[url])            //getDate is called everytime the url changes
 
     return {fetchedData,loading};
-}
+}  

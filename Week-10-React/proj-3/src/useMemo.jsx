@@ -8,15 +8,19 @@
 // 1st approach, we can also prevent the unnecessary re-renders using memo
 import { createContext, useContext, useState,memo } from "react"
 
-const counterContext = createContext()
+//separating the the context for the count and the setCount
+const countContext = createContext()
+const setCountContext = createContext()
 
 export function GrandparentCounter(){
 
     const [count, setCount] = useState(0)
 
-    return <counterContext.Provider value={{count,setCount}}>
-        <ParentCounter/>
-        </counterContext.Provider>
+    return (<countContext.Provider value={count}>
+                <setCountContext.Provider value={setCount}>
+                    <ParentCounter/>
+                </setCountContext.Provider>
+            </countContext.Provider>)
 }
 
 // Wrapping the components inside the memo function
@@ -31,7 +35,7 @@ const ParentCounter = memo(function(){
 
 const CounterValue =memo( function (){
 
-    const {count} = useContext(counterContext)
+    const count = useContext(countContext)          // destructuring count from countContext
 
     return <div>
         <h2>Count : {count}</h2>
@@ -40,7 +44,7 @@ const CounterValue =memo( function (){
 
 const CounterButtons = memo(function(){
 
-    const {setCount} = useContext(counterContext)
+    const setCount = useContext(setCountContext)           // destructuring setCount
 
     function IncreaseCount(){
         setCount(count => count+1)    
@@ -50,7 +54,7 @@ const CounterButtons = memo(function(){
     }
 
     return <div>
-        <button onClick={IncreaseCount}>Increase</button>
+        <button onClick={IncreaseCount}>Increase</button> <br />
         <button onClick={DecreaseCount}>Decrease</button>
     </div>
 })

@@ -1,5 +1,6 @@
 import { Page1 } from "./practice-1-component"
 import { OtpComponent } from "./practice-2-OTP"
+import { SidebarComponent } from "./practice-3-sidebar"
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
     //   <div className="children bg-green-400">3</div>
     // </div>
     // <Page1/>
-    <OtpComponent/>
+    // <OtpComponent/>
+
+    <SidebarComponent/>
   )
 }
 

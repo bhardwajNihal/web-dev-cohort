@@ -17,6 +17,9 @@ export default {
         green : {
           400 : "#45718a"
         }
+      },
+      width:{
+        '200': '35rem'
       }
     },
   },

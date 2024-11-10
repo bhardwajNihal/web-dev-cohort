@@ -48,7 +48,7 @@ export function SidebarComponent() {
                 <p className='text-lg my-2 xl:text-xl'>Monday, 14 October</p>
                 <h2 className='text-2xl font-medium my-2 xl:text-4xl'>Good morning, Phabhleen 👋</h2>
             </div>
-            <div className="Tasksection h-auto w-full border bg-white border-gray-500 p-2 rounded 
+            <div className="Tasksection mb-8 h-auto w-full border bg-white border-gray-500 p-2 rounded 
                             xl:w-2/5 xl:absolute xl:top-64 xl:right-96 xl:mr-4">
                 <div className="heading flex bg-gray-100 p-1 rounded-lg xl:p-3">
                     <CalendarTodayIcon style={{ fontSize: 20, color: 'gray', margin: "4" }} />

@@ -16,3 +16,4 @@ learnt :
 5. tsconfig 
 6. rootDir and outDir   - will have the .ts and .js file respectively
 7. noImpliciteAny   -- by default is true, prevents the any type implicitely
+8. types and interfaces 

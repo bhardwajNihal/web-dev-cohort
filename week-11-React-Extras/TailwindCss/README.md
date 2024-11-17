@@ -1,8 +1,7 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+One of the methods to toggle dark and light theme : 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. set darkMode:'selector' in tailwindconfig.js
+2. set class="dark" is the the html tag in index.html
+3. add and button and onclick handler with : document.querySelector("html").classList.toggle("dark"),

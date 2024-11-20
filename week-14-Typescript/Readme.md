@@ -5,7 +5,8 @@
 4. create a .ts file to start writing ts code
 
 *can't directly run the .ts file, 
---> npx tsc -b     => builds a .js file just next to it, which runs after being successfully compiled
+
+-->  npx tsc -b  ==> builds a .js file just next to it, which runs after being successfully compiled
 --> tsc --watch  => changes the .js file at the runtime continuously, no need to compile everytime any changes are made
 
 learnt : 
@@ -15,5 +16,5 @@ learnt :
 4. passing functional arguments
 5. tsconfig 
 6. rootDir and outDir   - will have the .ts and .js file respectively
-7. noImpliciteAny   -- by default is true, prevents the any type implicitely
-8. types and interfaces 
+7. noImpliciteAny   -- by default is true, prevents the "any" type implicitely
+8. types and interfaces

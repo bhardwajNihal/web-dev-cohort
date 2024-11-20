@@ -29,22 +29,8 @@ setTimeout(cb, 3000);
 
 delay(callback)
 
+
 // will compile down to that js syntax which is compatible to the standard set in the tsconfig file
 const arrowfn = ()=> console.log("hello!");
 
 arrowfn()
-
-// function with object as an argument
-
-// instead of defining the type of an object each time is used in a new function,
-// ts provides a way to define a separete type of object explicitely for its reusability - using types and interfaces
-
-interface userType{             
-    firstname: String,
-    lastname: string,
-    age:Number
-}
-
-function greeting(user:userType){
-    console.log("hello ",user.firstname, user.age);
-}

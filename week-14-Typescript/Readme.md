@@ -1,6 +1,6 @@
 
 1. initialize an empty node project
-2. npm install typescript                   || or npm install -g typescript for installing globally and using across multiple projects
+2. npm install typescript          || or npm install -g typescript for installing globally and using across        multiple projects
 3. npx tsc --init            ==> to create a typescript config.json file
 4. create a .ts file to start writing ts code
 
@@ -18,3 +18,4 @@ learnt :
 6. rootDir and outDir   - will have the .ts and .js file respectively
 7. noImpliciteAny   -- by default is true, prevents the "any" type implicitely
 8. types and interfaces
+9. Arrays

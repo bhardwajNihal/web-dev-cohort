@@ -21,7 +21,7 @@ console.log("Union Type Array:", mixed);
 // 5. Readonly Array: An array that cannot be modified
 let readonlyArray: ReadonlyArray<number> = [1, 2, 3];
 console.log("Readonly Array:", readonlyArray);
-// readonlyArray[0] = 10; // Uncommenting this will cause an error
+// readonlyArray[0] = 10; // this will cause an error
 
 // 6. Common Array Methods
 let numbers: number[] = [10, 20, 30, 40];
@@ -39,7 +39,7 @@ let doubled = numbers.map(n => n * 2);
 console.log("Doubled Numbers (Map):", doubled);
 
 // Filter: Create a new array with elements that pass a condition
-let evens = numbers.filter(n => n % 20 === 0);
+let evens = numbers.filter(n => n % 2 === 0);
 console.log("Filtered Numbers (Evens):", evens);
 
 // Reduce: Reduce the array to a single value (sum in this case)
@@ -58,17 +58,17 @@ numbers.splice(1, 2); // Removes 2 elements starting at index 1
 console.log("After Splice:", numbers);
 
 // 7. Custom Types in Arrays
-// Define a custom type using an interface  
-interface User {
-    name: string;
-    age: number;
-}
+    // Define a custom type using an interface  
+    interface User {
+        name: string;
+        age: number;
+    }
 
 // Array of objects using the custom type
-let users: User[] = [
-    { name: "Alice", age: 25 },
-    { name: "Bob", age: 30 }
-];
+    let users: User[] = [
+        { name: "Alice", age: 25 },
+        { name: "Bob", age: 30 }
+    ];
 
 // Access and manipulate elements
 console.log("Users Array:", users);

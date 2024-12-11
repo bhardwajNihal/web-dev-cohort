@@ -1,11 +1,14 @@
-import { GrandparentCounter } from "./Component"
-import Parent from "./MemoizedComp"
+import { Counter } from "./components/Counter"
+
 function App() {
  
 
   return <div>
-    <GrandparentCounter/>
-    <Parent/> 
+    {/* <GrandparentCounter/>
+    <Parent/>  */}
+
+      <h2>recoil</h2>
+      <Counter/>
   </div>
 }
 

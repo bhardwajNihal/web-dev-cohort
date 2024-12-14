@@ -19,3 +19,8 @@ learnt :
 7. noImpliciteAny   -- by default is true, prevents the "any" type implicitely
 8. types and interfaces
 9. Arrays
+
+
+- Common pakages that require types definition file to the separately installed as dev-dependency
+    - express, cors, jsonwebtoken, bcryptjs, socket.io, dotenv, body-parser, multer, cookie-parser
+- mongoose, redix, axios - have built-in types support, no need to install a @types file

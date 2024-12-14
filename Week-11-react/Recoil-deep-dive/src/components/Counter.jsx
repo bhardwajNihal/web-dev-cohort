@@ -34,7 +34,7 @@ function IncreaseCounter() {
 
 function DecreaseCounter() {
 
-    const setCount = useSetRecoilState(CounterAtom)
+    const setCount = useSetRecoilState(CounterAtom)             //This hook only updates the value of a Recoil atom but   does not read its value.
 
     return <div>
         <button onClick={()=> setCount(c => c-1)}>Decrease</button>

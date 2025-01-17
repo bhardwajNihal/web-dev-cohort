@@ -26,12 +26,6 @@
 // BASIC SQL QUERIES :
     async function main(){
 
-        // SELECTION
-        // const response = await pgClient.query("SELECT * FROM users");
-
-        // UPDATION
-        // const response = await pgClient.query("UPDATE users SET username = 'nidhi' WHERE id=1")
-
         // CREATION
             await pgClient.query(`CREATE TABLE IF NOT EXISTS todos(
                 id SERIAL PRIMARY KEY,

@@ -15,7 +15,6 @@ function FormComponent(){
 const{
   register,
   handleSubmit,
-  watch,
   formState : {errors, isSubmitting}
 } = useForm()
 

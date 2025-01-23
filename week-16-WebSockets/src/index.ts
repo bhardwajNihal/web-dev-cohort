@@ -8,12 +8,18 @@ const wss = new WebSocketServer({port: 8080});
 wss.on("connection", (socket) => {
     console.log("connection eshtablished!")
 
-    setInterval(() => {
-        socket.send("hi from the server!")              //sending response from server in real time
-    }, 1000);
+    socket.send("hi from the server!")
 
+// ping-pong server
     socket.on("message", (e) => {               // logging incoming messages
-        console.log(e.toString());
+        
+        const message = e.toString()
+        console.log(message);
+
+        if(message === "ping"){
+            socket.send("pong")
+        }
+        
     })
     
 })

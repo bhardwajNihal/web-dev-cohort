@@ -5,7 +5,7 @@
     - initialize an empty node typescript project
     - npm init -y  >>  npm i typescript >> npx tsc --init  >> change rootdir and ourdir in tsconfig.json
     - add srcipts to compile and run 
-
+    
     - npm i prisma
     - npm prisma init > create prisma/schema.prisma file
     - add db url to .env file 

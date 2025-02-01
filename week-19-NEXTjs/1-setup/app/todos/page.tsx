@@ -2,7 +2,7 @@ import axios from "axios"
 
 // for Server side Rendering - Unlike useEffect way of rendering data in React
     // SSR - returns whole HTML with all data upfront, on the first request itself. Thus making the website SEO friendly.
-    
+
 //function to fetch data from backend
     async function fetchTodos() {
         const response = await axios.get("https://jsonplaceholder.typicode.com/todos")
@@ -24,7 +24,7 @@ import axios from "axios"
 // Exporting the parent function to render all todos to the FE
     export default async function TodoComp(){
         const data = await fetchTodos();                //returns array of todos
-
+        await new Promise(r => setTimeout(r, 3000))     //introducing loader
         return <div>
             {data.map((data:todoInterface,index:number) => <Todos key={index} title={data.title} isdone={data.isdone}/>)}
         </div>

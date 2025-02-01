@@ -18,7 +18,8 @@ A modern, fast, and SEO-friendly web application built using Next.js.
     - In the app folder, the component in "page.tsx" will render on "/" route
     - for any other route, i.e. for "/me", add a folder "me" and a file "page.tsx" in it, every other folder will be ignored.
 
-- Layout : let's us define the layout of our app by adding fixed component in the structure. like- navbar and footer.   
+- Layout : let's us define the layout of our app by adding fixed component in the structure. like- navbar and footer. 
+- However loader is not needed, as pages are already rendered server side. But to do so add a file loading.tsx in the same folder, and all the loader component there.
 
 
 - For server side rendering a different approach is taken to fetch data from backend and displaying it on FE.

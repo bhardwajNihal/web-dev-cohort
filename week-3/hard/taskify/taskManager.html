@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>makeitHappen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .mainbody{
+            height: 100vh;
+            width: 100vw;
+            background-image: url(http://www.pixelstalk.net/wp-content/uploads/2016/10/Canvas-Original-image-1920x1200.jpg);
+            background-size: cover; 
+            background-position: top;   
+            
+        }
+        .navbar{
+            height: 8%;
+            width: 100%;
+            color: #fff;
+            padding-left: 2rem;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 3rem; 
+            padding-top: .5rem;
+
+        }
+        .logo{
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        .do{
+            color: aqua;
+        }
+        .nav-text{
+            font-size: small;
+            color: rgb(210, 210, 210);
+        }
+        .tasksection{
+            height: 92%;
+            width: 100%;
+            display: flex;
+            padding: 1rem;
+            padding-bottom: 3rem;
+            gap: 4rem;
+            position: relative;
+        }
+        .leftsection{
+            height: 100%;
+            width: 28%;
+        }
+        .rightsection{
+            height: 100%;
+            width: 65%;
+            border-left: solid 3px #fff;
+            border-bottom: solid 3px #fff;
+        }
+        .x-axis{
+            color: #fff;
+            letter-spacing: 1rem;
+            position: absolute;
+            top: 92%;
+            left: 54%;
+        }
+        .y-axis{
+            color: #fff;
+            letter-spacing: 1rem;
+            position: absolute;
+            transform: rotate(270deg);
+            left: 26%;
+            top: 45%;  
+        }
+        .task-management-grid{
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-rows: repeat(2,1fr);
+            grid-template-columns: repeat(2,1fr);
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .grid2,.grid3,.grid1,.grid4{
+            background: rgb(255, 255, 255,0.1);
+            backdrop-filter: blur(4px);
+            color:#dedddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            flex-direction: column;
+            font-size: small;
+        }
+        .datetime{
+            height: 100%;
+            width: 25%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .date{
+            font-size: larger;
+            font-weight: bold;
+        }
+        .time{
+            font-size: large;
+        }
+        .addtaskform{
+            margin-top: 3rem;
+            height: 30%;
+            width: 100%;
+            background: rgb(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        #task-input{
+            width: 100%;
+            height: 30px;
+            padding-left: 1rem;
+            border: none;
+            border-radius: 50px;
+        }
+        .taskform-bottom{
+            display: flex;
+            font-size: small;
+        }
+        .duedateandtime{
+            width: 70%;
+            font-size: small;
+        }
+        .addbutton{
+            font-size: 30px;
+            font-weight: 100;
+            padding: 15px 20px;
+            border-radius: 50px;
+            margin-left: 2rem;
+            background-color: #fff;
+        }
+        .addbutton:hover{
+            background-color: #1f1e1e;
+            color: #fff;
+            cursor: pointer;
+        }
+        .task-token{
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            margin-top: 3rem;
+            height: 80px;
+            width: 330px;
+            padding: .5rem;    
+            display: none;   
+        }
+        .tokentop-part{
+            height: 50%;
+            display: flex;
+        }
+        .taskname{
+            height: 50px;
+            width: 85%;
+            font-size: x-large;
+        }
+        .deletetask{
+            background-color: rgb(174, 174, 174);
+            width: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+        }
+        .deletetask:hover{
+            background-color: #1f1e1e;
+            color: #fff;
+        }
+        .tokenbottom-part{
+            display: flex;
+            justify-content:flex-start;
+            align-items: flex-end;
+            gap: 2.5rem;
+            height: 50%;
+        }
+        #status{
+            height: 30px;
+            width: 100px;
+            background-color: rgb(220,220,220);
+            border-radius: 10px;
+            font-size:15px;
+            color: rgb(88, 88, 88);
+            text-align: center;
+        }
+        .token-duedate{
+            font-size: small;
+            color: grey;
+        }
+        .token-duetime{
+            font-size: small;
+            color: grey;
+        }
+
+
+        
+    </style>
+
+</head>
+<body>
+    <div class="mainbody">
+
+        <div class="navbar">
+            <div class="logo">make it<span class="do"> Happen.</span> <span class="nav-text">plan prioritize execute</span></div>
+            <div class="datetime">
+                <div class="currentdate"></div>
+                <div class="currenttime"></div>
+            </div>
+        </div>  
+
+        <div class="tasksection">
+
+            <div class="leftsection">
+                <div class="addtaskform">
+                    <div class="taskform-top">
+                        <input type="text" id="task-input" placeholder="enter task...">
+                    </div> <br>
+
+                    <div class="taskform-bottom">
+                        <div class="duedateandtime">
+                            <label for="input-duedate">due date : </label>
+                            <input type="date" id="input-duedate"> <br><br>
+                            <label for="input-duetime">time : </label>
+                            <input type="time" id="input-duetime">
+                        </div>
+                        <div class="addbutton">+</div>
+                    </div>
+
+                </div>
+
+                <div class="task-token" draggable="true">
+
+                </div>
+
+            </div>
+    
+    
+            <div class="rightsection">
+
+                <div class="x-axis">Importance</div>
+                <div class="y-axis">Urgency</div>
+
+                <div class="task-management-grid">
+                    <div class="grid1"></div>
+                    <div class="grid2"><div class="gridtext">most     urgent <br>most important</div></div>
+                    <div class="grid3"><div class="gridtext">least urgent <br>least important</div></div>
+                    <div class="grid4"></div>
+                </div>    
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        let date = new Date();
+        let currentdate = document.querySelector(".currentdate")
+        let currenttime = document.querySelector(".currenttime")
+
+        let taskinput = document.querySelector("#task-input");
+        let inputDuedate = document.querySelector("#input-duedate");
+        let inputDuetime = document.querySelector("#input-duetime");
+        let addbutton = document.querySelector(".addbutton");
+        let taskToken = document.querySelector(".task-token");
+
+        currentdate.innerHTML = date.toDateString()
+        currenttime.innerHTML = `${date.getHours()}:${date.getMinutes()}`
+
+        addbutton.addEventListener("click",()=>{
+            taskToken.style.display = "block"
+            taskToken.innerHTML = `
+            <div class="tokentop-part">
+                    <div class="taskname">${taskinput.value}</div>
+                    <div class="deletetask" onclick = "deleteTask()"><span class="material-symbols-outlined">delete</span></div>
+                    </div>
+                    <div class="tokenbottom-part">
+                        <div class="task-status">
+                            <select name="status" id="status">
+                                <option value="Pending">Pending</option>
+                                <option value="review">review</option>
+                                <option value="finished">Finished</option>
+                            </select>
+                        </div>
+                        <div class="due">
+                            <div class="token-duedate">${inputDuedate.value}</div>
+                            <div class="token-duetime">${inputDuetime.value}</div>
+                        </div>
+                    </div>`
+            
+        })
+
+        function deleteTask(){
+            taskToken.innerHTML = ""
+            taskToken.style.display = "none"
+        }
+       
+
+
+    </script>
+</body>
+</html>

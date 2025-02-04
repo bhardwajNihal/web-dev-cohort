@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        body{
+            padding: 15px;
+        }
+        .answerbox{
+            position: absolute;
+            top:15.5%;
+            left: 23.5%;
+            background-color: rgb(246, 208, 208);
+            height: 25px;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+        .otpbox{
+            height: 5%;
+            width: 8%;
+            background-color: rgb(11, 11, 11);
+            padding: 5px 10px;
+            color: white;
+            letter-spacing: 1.2rem;
+            margin-top: -25px;
+            margin-left: 120px;
+        }
+        .check{
+            padding: 5px 10px;
+            background-color: rgb(234, 215, 215);
+        }
+        .answerboxprime{
+            background-color: rgb(244, 235, 235);
+            padding: 5px 10px;
+            font-weight: bold;
+            width: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+<body>
+    <h2>Exercise 1 : convert km to mile</h2>
+    <input class="inputvalue" type="number" placeholder="Enter value in Km">
+    <button class="convertbutton">Convert</button>
+    <span style="position: absolute;left: 21%; " class="material-symbols-outlined">
+        equal
+        </span>
+    <div class="answerbox">
+        in miles
+    </div> <br><br>
+
+
+    <h2>Exercise 2 : Generate random 4 digit OTP</h2>
+    <button class="otp">Generate OTP </button> : 
+    <div class="otpbox">****</div>
+<br><br>
+
+    <h2>Exercise 3 : check for prime</h2>
+    <input type="number" class="inputnum" placeholder="Enter the number"> : 
+    <button class="check">check</button>
+    <div class="answerboxprime">prime</div>
+
+
+
+
+    <script>
+        document.querySelector(".convertbutton").addEventListener("click",()=>{
+            let inputval = document.querySelector(".inputvalue").value;
+            let convertedval = inputval*(0.621371);
+            document.querySelector(".answerbox").innerHTML = `${convertedval} miles`;
+        })
+
+        document.querySelector(".otp").addEventListener("click", ()=>{
+            let randomnum = Math.floor(Math.random()*(10000-1000 + 1) + 1000);
+            document.querySelector(".otpbox").innerHTML = `${randomnum}`;
+        })
+
+        
+        document.querySelector(".check").addEventListener("click",()=>{
+            let inputnum = document.querySelector(".inputnum").value;
+            if(inputnum == 1 ){
+                document.querySelector(".answerboxprime").innerHTML = "Neither prime nor composite!";
+            } 
+            else{
+            let prime = true;
+            let divisor;
+            for(let i =2;i<inputnum;i++){
+                if(inputnum%i == 0){
+                    prime = false;
+                    divisor = i;
+                    break;
+                }
+            }
+            if(prime==true){
+                document.querySelector(".answerboxprime").innerHTML = "Prime number!"
+            }
+            else{
+                document.querySelector(".answerboxprime").innerHTML = `Composite number (Smallest factor : ${divisor})!`
+            };
+            }
+        })
+
+        
+    </script>
+</body>
+</html>

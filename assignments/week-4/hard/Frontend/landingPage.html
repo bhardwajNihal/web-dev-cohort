@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>makeitHappen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .parentcontainer{
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .navbar{
+            height: 14%;
+            width: 75%;
+            border-bottom: 1px solid rgb(174, 174, 174);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+        .logoname{
+            font-size: xx-large;
+        }
+        .happen{
+            color: rgb(0, 182, 214);
+            font-weight: bold;
+        }
+        .tagline{
+            color: rgb(104, 104, 104);
+        }
+        .login-signup{
+            height: 100%;
+            width: 25%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .login,.signup{
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px; 
+            background-color: #fff;
+            background-color: rgb(0, 182, 214);
+            color: #fff;
+            font-size: small;
+            cursor: pointer;
+        }
+        .login:hover,.signup:hover{
+            background-color: #fff;
+            color: #000;
+            border: solid 1px gray;
+        }
+        .herosection{
+            width: 75%;
+            height: 86%;
+            margin: auto;
+            display: flex;
+        }
+        .leftsection{
+            width: 45%;
+            height: 100%;
+            padding: .5rem;
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 3.5rem;
+            padding-top: 2rem;
+            color: rgb(54, 54, 54);
+        }
+        .matrix{
+            color: rgb(0, 182, 214);
+        }
+        .rightsection{
+            width: 70%;
+            height: 90%;
+            margin-top: 1rem;
+            margin-left: 3rem; 
+        }
+        .rightsection img{
+            width: 100%;
+            height: 100%;
+        }
+        .signup-box{
+            height: 70%;
+            width: 25%;
+            background-color: #fff;
+            position: absolute;
+            top: 17%;
+            left: 37%;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
+        .signup-box h2{
+            margin-top: 1rem;
+            margin-bottom: .5rem;
+        }
+        .signup-box h4{
+            margin-bottom: .9rem;
+            color: grey;
+            font-weight: lighter;
+        }
+        #full-name,#email,#password{
+            height: 40px;
+            width: 100%;
+            border-radius: 8px;
+            border: none;
+            background-color: rgb(236, 244, 255);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        #submit-signup{
+            height: 45px;
+            width: 50%;
+            background-color: rgb(0, 182, 214);
+            border: none;
+            color: #fff;
+            border-radius: 25px;
+            margin-top: .7rem;
+        }
+        #submit-signup:hover{
+            background-color: #fff;
+            border: 1px solid grey;
+            color: #000;
+            cursor: pointer;
+        }
+        #execute{
+            color: rgb(0, 182, 214);
+        }
+        .overlay{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top :0;
+            left: 0;
+            background-color: rgb(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+            display: none;
+        }
+        .signup-goback-arrow{
+            height: 35px;
+            width: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+        }
+        .signup-goback-arrow:hover{
+            background-color: rgb(236, 236, 236);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .login-box{
+            height: 300px;
+            width: 25%;
+            background-color: #fff;
+            position: absolute;
+            top: 25%;
+            left: 37%;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
+        #login-text{
+            font-size: small;
+            color: grey;
+        }
+        .login-box h3{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .login-goback-arrow{
+            height: 35px;
+            width: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+        }
+        .login-goback-arrow:hover{
+            background-color: rgb(236, 236, 236);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #login-email,#login-password{
+            height: 40px;
+            width: 100%;
+            border-radius: 8px;
+            border: none;
+            background-color: rgb(236, 244, 255);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        #submit-login{
+            height: 45px;
+            width: 50%;
+            background-color: rgb(0, 182, 214);
+            border: none;
+            color: #fff;
+            border-radius: 25px;
+            margin-top: .7rem;
+        }
+        #submit-login:hover{
+            background-color: #fff;
+            border: 1px solid grey;
+            color: #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="parentcontainer">
+
+        <div class="navbar">
+
+            <div class="main-logo">
+                <div class="logoname">makeit<span class="happen">Happen</span>.</div>
+                <div class="tagline">plan. prioritize. execute.</div>
+            </div>
+
+            <div class="login-signup">
+                <button class="signup">SignUp</button>
+                <button class="login">LogIn</button>
+            </div>
+
+        </div>
+
+        <div class="herosection">
+            <div class="leftsection">
+                <div class="hero-text">
+                    Master Your Time with the <br> <span class="matrix">Eisenhower Matrix</span><br> Prioritize What Truly Matters.
+                </div>
+            </div>
+            <div class="rightsection">
+                <img src="http://muthu.co/wp-content/uploads/2016/01/TheEisenhowerMatrix.png" alt="">
+            </div>
+        </div>
+
+        <div class="overlay">
+        </div>
+        
+        <div class="signup-box">
+            <div class="signup-goback-arrow"><span class="material-symbols-outlined">
+                arrow_back
+                </span></div>
+            <h2>Its time to <br> <span id="execute">Execute</span> things</h2>
+            <h4>Start with signing up</h4>
+            <input type="text" id="full-name" placeholder="John Doe ..">
+            <input type="email" id="email" placeholder="john123@gmail.com">
+            <input type="password" id="password" placeholder="password" >
+            <button id="submit-signup">Submit</button>
+        </div>
+
+        <div class="login-box">
+            <div class="login-goback-arrow"><span class="material-symbols-outlined">
+                arrow_back
+                </span></div>
+            <h3>Login <span id="login-text"> <br> to start adding your tasks</span></h3>
+            <input type="email" id="login-email" placeholder="john123@gmail.com">
+            <input type="password" id="login-password" placeholder="password" >
+            <button id="submit-login">Submit</button>
+        </div>
+        
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script>
+
+// signup section : 
+    const signupButton = document.querySelector(".signup")
+    const signupBox = document.querySelector(".signup-box")
+    const overlay = document.querySelector(".overlay")
+    const signupSubmitButton = document.querySelector("#submit-signup")
+    const signUpGobackArrow = document.querySelector(".signup-goback-arrow")
+
+    signupButton.addEventListener("click", ()=>{
+        signupBox.style.display = "block";
+        overlay.style.display = "block"
+    })
+    signUpGobackArrow.addEventListener("click",()=>{
+        signupBox.style.display = "none"
+        overlay.style.display = "none"
+    })
+
+    signupSubmitButton.addEventListener("click", signUp)
+
+
+    async function signUp(){
+            try{
+            const name = document.querySelector("#full-name").value;
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+            
+            const response = await axios.post("http://localhost:3000/user/signup",{
+                name,email,password
+            })
+
+            signupBox.style.display = "none"
+            overlay.style.display = "none"
+           
+            alert("you Signed Up successfully!!\nContinue Signing In")
+            document.querySelector("#full-name").value = "";
+            document.querySelector("#email").value = "";
+            document.querySelector("#password").value = "";
+            }catch(error){
+                if(error.response.data.msg === "user already exists!"){
+                    alert("Email already exists!")
+                }
+                else{
+                    alert("Invalid input!")
+                }
+            }
+        }
+
+
+// loginIn section : 
+    const loginButton = document.querySelector(".login")
+    const loginBox = document.querySelector(".login-box")
+    const loginSubmitButton = document.querySelector("#submit-login")
+    const loginGobackArrow = document.querySelector(".login-goback-arrow")
+
+    loginButton.addEventListener("click", ()=>{
+        loginBox.style.display = "block";
+        overlay.style.display = "block"
+    })
+    loginGobackArrow.addEventListener("click",()=>{
+        loginBox.style.display = "none"
+        overlay.style.display = "none"
+    })
+
+    loginSubmitButton.addEventListener("click", login)
+
+    async function login(){
+        
+        try{
+            const email = document.querySelector("#login-email").value;
+            const password = document.querySelector("#login-password").value;
+
+            const response = await axios.post("http://localhost:3000/user/signin",{
+            email : email,
+            password : password
+        })
+
+            loginBox.style.display = "none"
+            overlay.style.display = "none"
+           
+            
+            localStorage.setItem('token', response.data.token)
+
+            document.querySelector("#login-email").value = "";
+            document.querySelector("#login-password").value = "";
+
+            // redirecting to homepage page
+            
+            window.location.href = "http://localhost:3000/home"; 
+
+            // alert("you logged In successfully!")
+
+        }catch(error){
+            if(error.response.data.msg ==="user does not exist, please sign up!"){
+                alert("User doesn't exist!\nPlease Signup or enter valid input")
+            }
+            else{
+                alert("Incorrect password!")
+            }
+        }
+    }
+
+
+    </script>
+</body>
+</html>

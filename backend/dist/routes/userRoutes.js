@@ -21,6 +21,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const auth_1 = require("../middleware/auth");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const accountModel_1 = require("../db/models/accountModel");
 exports.userRouter = (0, express_1.Router)();
 exports.userRouter.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const validInputFormat = zod_1.z.object({
@@ -50,10 +51,16 @@ exports.userRouter.post("/signup", (req, res) => __awaiter(void 0, void 0, void 
     }
     //hashing password before storing 
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-    yield userModel_1.User.create({
+    const response = yield userModel_1.User.create({
         fullname,
         email,
         password: hashedPassword
+    });
+    // giving the user a dummy account balance for future transactions
+    const currentUserId = response._id;
+    yield accountModel_1.Account.create({
+        userId: currentUserId,
+        balance: Math.floor(Math.random() * 10000) // random balance b/w 1-10000
     });
     res.status(200).json({
         message: "User Signed Up successfully!!!"

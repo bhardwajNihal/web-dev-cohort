@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { userRouter } from "./routes/userRoutes";
 import { ConnectToDB } from "./db/dbconnection";
+import { accountRouter } from "./routes/accountRoutes";
 
 dotenv.config();
 const app = express();
@@ -11,7 +12,12 @@ app.use(cors());
 
 const port = process.env.PORT;
 
-app.use("/api/v1/user", userRouter);
+// route to handle all requests at /user endpoint
+    app.use("/api/v1/user", userRouter);
+
+// route to handle all requests at /account endpoint
+    app.use("/api/v1/account", accountRouter);
+
 
 
 ConnectToDB().then(() => {

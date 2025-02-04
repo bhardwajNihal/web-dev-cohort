@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken"
 import { userAuth } from "../middleware/auth";
 import dotenv from "dotenv"
 dotenv.config()
+import { Account } from "../db/models/accountModel";
 
 export const userRouter = Router();
 
@@ -46,11 +47,19 @@ userRouter.post("/signup", async (req:Request, res:Response) => {
     //hashing password before storing 
     const hashedPassword = await bcrypt.hash(password,10)
 
-    await User.create({
+    const response = await User.create({
         fullname,
         email, 
         password:hashedPassword
     })
+
+    // giving the user a dummy account balance for future transactions
+    const currentUserId = response._id;
+    await Account.create({
+        userId : currentUserId,
+        balance : Math.floor(Math.random()*10000)           // random balance b/w 1-10000
+    })
+
 
     res.status(200).json({
         message : "User Signed Up successfully!!!"

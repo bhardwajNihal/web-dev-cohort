@@ -11,9 +11,10 @@
     - add db url to .env file 
 
     - Now good to go : 
-        - create DB models in the schema.prisma file  >> migrate the changes by - [npx prisma migrate dev], and the table will be created 
+        - create DB models in the schema.prisma file  
+        >> migrate the changes by - [npx prisma migrate dev], and the table will be created 
         - To insert values : 
-            - [npx prisma generate dev], creates a client file to @prisma/client that has all the logic that converts prisma query to raw sql querie
+            - [npx prisma generate dev],This creates TypeScript types and a fully typed API for database operations, creates a client file to @prisma/client that has all the logic that converts prisma query to raw sql querie
             - just import {Prisma client} from "@prisma/client"
             - start inserting values using prisma autocomplete suggestions
             - expressify it

@@ -111,7 +111,7 @@ exports.userRouter.put("/update", auth_1.userAuth, (req, res) => __awaiter(void 
         console.log("Error Updating User", error);
     }
 }));
-exports.userRouter.get("/user-data", auth_1.userAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.userRouter.get("/data", auth_1.userAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.userId;
     const foundUser = yield userModel_1.User.findOne({
         _id: userId
@@ -123,6 +123,7 @@ exports.userRouter.get("/user-data", auth_1.userAuth, (req, res) => __awaiter(vo
         return;
     }
     res.status(200).json({
+        userId: foundUser._id,
         fullname: foundUser.fullname,
         email: foundUser.email
     });

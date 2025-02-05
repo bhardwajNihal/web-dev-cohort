@@ -125,7 +125,7 @@ userRouter.put("/update", userAuth, async(req:Request, res:Response) => {
 
 })
 
-userRouter.get("/user-data",userAuth, async(req:Request, res:Response) => {
+userRouter.get("/data",userAuth, async(req:Request, res:Response) => {
     const userId = req.userId;
 
     const foundUser = await User.findOne({
@@ -140,6 +140,7 @@ userRouter.get("/user-data",userAuth, async(req:Request, res:Response) => {
     }
 
     res.status(200).json({
+        userId: foundUser._id,
         fullname : foundUser.fullname,
         email : foundUser.email
     })

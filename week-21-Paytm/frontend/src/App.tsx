@@ -1,13 +1,22 @@
-import { Heading } from "./components/heading"
-import { SubHeading } from "./components/sub-heading"
-
+import { Route, Routes } from "react-router-dom"
+import { Home } from "./pages/home"
+import { Signup } from "./pages/signup"
+import { Signin } from "./pages/signin"
+import { Dashboard } from "./pages/dashboard"
 
 function App() {
 
   return (
-    <div>
-      <Heading text="hello" size="3xl"/>
-      <SubHeading text="hello" size="2xl"/>
+    <div className="w-full h-screen bg-gray-200 flex justify-center items-center">
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+
+      </Routes>
     </div>
   )
 }

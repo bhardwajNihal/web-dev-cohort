@@ -3,16 +3,25 @@ import { BACKEND_URL } from "../constants"
 import { useEffect, useState } from "react"
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { allUsersAtom } from "../atoms/usersAtom"
+import { filteredUsersAtom } from "../atoms/filteredUsersAtom"
 
 export function Dashboard() {
     const [currentUserId, setCurrentUserId] = useState()
     const [currentUsername, setCurrentUsername] = useState()
     const [currentbalance, setCurrentBalance] = useState()
-    const [allUsers, setAllusers] = useState([])
     const [isSending, setIsSending] = useState(false)
     const [currentBeneficiary, setCurrentBeneficiary] = useState("")
     const [filter, setFilter] = useState("")
     const [sendLoader, setSendLoader] = useState(false)
+
+    //introducing recoil for all users, to improve searched users rendering
+    const allUsers = useRecoilValue(allUsersAtom)
+    const setAllusers = useSetRecoilState(allUsersAtom)
+    const filteredUsers = useRecoilValue(filteredUsersAtom)
+    const setFilteredUsers = useSetRecoilState(filteredUsersAtom)
+
 
     const amountRef = useRef();
     const navigate = useNavigate();
@@ -57,22 +66,23 @@ export function Dashboard() {
     //Send money
     async function sendMoney() {
         setSendLoader(true)
-        try{const response = await axios.post(BACKEND_URL + "/api/v1/account/transfer", {
-            toAccount: currentBeneficiary,
-            amount: amountRef.current?.value
-        }, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-        })
-        setIsSending(curr => !curr)
-        setSendLoader(false)
-        fetchUserBalance()
-        alert(response.data.message)
-    }catch(error){
-        alert(error.response.data.message);   
-        setSendLoader(false)
-    }
+        try {
+            const response = await axios.post(BACKEND_URL + "/api/v1/account/transfer", {
+                toAccount: currentBeneficiary,
+                amount: amountRef.current?.value
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            setIsSending(curr => !curr)
+            setSendLoader(false)
+            fetchUserBalance()
+            alert(response.data.message)
+        } catch (error) {
+            alert(error.response.data.message);
+            setSendLoader(false)
+        }
     }
 
 
@@ -87,6 +97,20 @@ export function Dashboard() {
             // console.log(currentUserId);   
         }
     }, [currentUserId])
+
+
+    // logic to filter users based on search
+    useEffect(() => {
+        axios.get(BACKEND_URL + `/api/v1/user/bulk?filter=${filter}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(response => {
+                setFilteredUsers(response.data.users)
+            })
+    }, [filter])
+
 
 
     // function to capitalize names 
@@ -123,23 +147,30 @@ export function Dashboard() {
         <div className="users w-full h-2/3 mt-8">
 
             <h2 className="font-semibold text-lg mb-2">Users</h2>
-            <input className="w-full h-8 border border-gray-400 rounded pl-2" type="text" placeholder="Search users..." />
+            <input
+                className="w-full h-8 border border-gray-400 rounded pl-2" type="text" placeholder="Search users..."
+                onChange={(e) => {
+                    setFilter(e.target.value)
+                }}
+            />
 
             {/*users-list  */}
             <div className="mt-2 pt-2 overflow-hidden overflow-y-auto h-[320px]">
-                {allUsers.map((user, index) => <div key={index} className="user w-full h-12 bg-gray-100 rounded px-2 flex justify-between items-center mb-2">
-                    <div className="flex items-center gap-2">
-                        <div className="avatar bg-gray-300 rounded-full h-8 w-8 flex justify-center items-center text-gray-500">{user.fullname?.charAt(0).toUpperCase()}</div>
-                        <div className="name">{capitalizeSentence(user.fullname)}</div>
-                        <div className="name text-sm text-gray-400 hidden md:block">{user.email}</div>
+                {filteredUsers.filter(u => u.userId != currentUserId).map((user, index) => 
+                    <div key={index} className="user w-full h-12 bg-gray-100 rounded px-2 flex justify-between   items-center mb-2">
+                        <div className="flex items-center gap-2">
+                            <div className="avatar bg-gray-300 rounded-full h-8 w-8 flex justify-center items-center text-gray-500">{user.fullname?.charAt(0).toUpperCase()}</div>
+                            <div className="name">{capitalizeSentence(user.fullname)}</div>
+                            <div className="name text-sm text-gray-400 hidden md:block">{user.email}</div>
+                        </div>
+                        <button className="bg-black text-white rounded text-xs h-8 w-24"
+                            onClick={() => {
+                                setIsSending(curr => !curr);
+                                setCurrentBeneficiary(user.email)
+                            }}
+                        >Send Money</button>
                     </div>
-                    <button className="bg-black text-white rounded text-xs h-8 w-24"
-                        onClick={() => {
-                            setIsSending(curr => !curr);
-                            setCurrentBeneficiary(user.email)
-                        }}
-                    >Send Money</button>
-                </div>)}
+                )}
             </div>
 
         </div>
@@ -164,15 +195,15 @@ export function Dashboard() {
         </div>}
 
 
-    {/* logout */}
-    <button 
-    className="bg-black text-white p-1 px-2 rounded absolute bottom-0 left-0 m-4 z-10"
-    onClick={async() => {
-        localStorage.removeItem("token");
-        navigate("/");
-        await new Promise(r => setTimeout(r,500))
-        alert("You logged out successfully!")
-    }}
-    >Logout</button>
+        {/* logout */}
+        <button
+            className="bg-black text-white p-1 px-2 rounded absolute bottom-0 left-0 m-4 z-10"
+            onClick={async () => {
+                localStorage.removeItem("token");
+                navigate("/");
+                await new Promise(r => setTimeout(r, 500))
+                alert("You logged out successfully!")
+            }}
+        >Logout</button>
     </div>
 }   

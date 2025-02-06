@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/app/lib/prismaClientInstance";
 
 export async function POST(req: NextRequest){
 
@@ -8,7 +8,6 @@ export async function POST(req: NextRequest){
     console.log(data);
 
 // adding entry to the db
-    const prisma = new PrismaClient()
 
     await prisma.user.create({
         data:{

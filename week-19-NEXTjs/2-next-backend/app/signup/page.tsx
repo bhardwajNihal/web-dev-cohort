@@ -21,8 +21,6 @@ export default function Signup(){
         console.log(response.data);
         router.push('/signin')          //redirecting to signin page
         
-
-        
     }
 
     return <div className="border border-white h-60 w-64 flex flex-col gap-4 p-4 ">

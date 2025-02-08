@@ -1,4 +1,3 @@
-import { NumberLiteralType } from "typescript";
 
 let x: number = 5;
 
@@ -10,9 +9,9 @@ function greet(name:string):string{
     return "hello " + name
 }      
 
-function sum(x:number, y:number):number{        //specifying the return type
-    return x + y
-}
+// function sum(x:number, y:number):number{        //specifying the return type
+//     return x + y
+// }
 
 function isEligibleToVote(age:number):boolean{
     return (age>=18) ? true  : false

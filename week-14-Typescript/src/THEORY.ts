@@ -52,7 +52,7 @@ function addNumbers(a: number, b: number): number {
 }
 
 function logMessage(message: string): void {
-  console.log(message); // void means no return value
+  console.log(message);       //just logs the message, returns nothing
 }
 
 // Optional and Default Parameters
@@ -65,9 +65,10 @@ function greetUser(name: string = "Guest"): string {
 // TypeScript allows you to define the shape of objects explicitly.
 // ===================================
 
-const user: { name: string; age: number; email?: string } = { 
+const user: { name: string; age: number; email: string } = { 
   name: "John", 
-  age: 25 
+  age: 25 ,
+  email : "john123@gmail.com"
 };
 
 // Optional properties using "?" 
@@ -139,17 +140,20 @@ const area = MathUtil.calculateArea(10);
 
 // ===================================
 // 7️⃣ Generics
-// Generics make reusable, type-safe functions and classes.
+    // Generics make reusable, type-safe functions and classes.
+    // Without Generics → We write separate functions for each type
+    // With Generics → We write one function that works for any type
 // ===================================
 
 function identity<T>(value: T): T {
   return value;
 }
-const stringIdentity = identity<string>("Hello");
-const numberIdentity = identity<number>(42);
+//called the same function but with dynamic types of both parameters and return 
+const stringIdentity = identity<string>("Hello");      // parameter and return type is string
+const numberIdentity = identity<number>(42);           // parameter and return type is number
 
 // Generics in Arrays
-function getArray<T>(items: T[]): T[] {
+function getArray<T>(items: T[]): T[] {     // a function that takes array of type T as parameter and returns the same
   return new Array().concat(items);
 }
 const numberArray = getArray<number>([1, 2, 3]);
@@ -219,7 +223,7 @@ let stringLength: number = (unknownValue as string).length;
 
 // ===================================
 // 🔥 BONUS: Custom Types with Unions
-// TypeScript allows you to create complex types using union and intersection types.
+// TypeScript allows us to create complex types using union and intersection types.
 // ===================================
 
 type Shape = "circle" | "square" | "rectangle";

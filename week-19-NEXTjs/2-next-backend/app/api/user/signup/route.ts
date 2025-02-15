@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/lib/prismaClientInstance";
+import prisma from "@/app/lib/prismaClientInstance";        //importing user-defined singleton prisma client
 
 export async function POST(req: NextRequest){
 

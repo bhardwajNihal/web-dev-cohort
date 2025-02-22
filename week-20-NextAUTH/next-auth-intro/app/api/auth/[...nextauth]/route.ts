@@ -9,9 +9,11 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email", placeholder: "user@example.com" },
-        password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password", placeholder:"password"},
       },
       async authorize(credentials) {
+        console.log("Received Credentials: ", credentials);
+
         // Simulated database user lookup (replace with real DB call)
         const user = { id: "1", name: "Nihal Bhardwaj", email: "nihal123@gmail.com", password: "nihal123" };
 
@@ -33,20 +35,24 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-
-    async session({ session, token }) {
-      session.user.id = token.id;
-      return session;
-    },
+// to add custom redirect 
+    // async redirect({ url, baseUrl }) {
+    //     return "/dashboard"; // 👈 Forces redirect to dashboard after login
+    //   }
+                
+    // async session({ session, token }) {
+    //   session.user.id = token.id;
+    //   return session;
+    // },
   },
 
   session: {
     strategy: "jwt",
   },
 
-  pages: {
-    signIn: "/signin",
-  },
+//   pages: {
+//     signIn: "/signin",
+//   },
 
   secret: process.env.NEXTAUTH_SECRET, // Ensure this is set in .env.local
 };

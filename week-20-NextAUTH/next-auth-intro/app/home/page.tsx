@@ -9,7 +9,7 @@ export default function Home(){
     return <div>
         <h2 className="text-4xl font-bold">Welcome to the Homepage</h2>
 
-        <button onClick={() => router.push("/signup")}>Sign Up</button>
-        <button onClick={() => router.push("/signin")} >Sign In</button>
+        <button className="p-2 bg-blue-600 rounded m-2" onClick={() => router.push("/signup")}>Sign Up</button>
+        <button className="p-2 bg-blue-600 rounded m-2" onClick={() => router.push("/api/auth/signin")} >Sign In</button>
     </div>
 }

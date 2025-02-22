@@ -38,3 +38,11 @@
         - DBconnection function is called inside each backend route.
         - To avoid duplicate connection just define the singleton client, which takes care that if the connection is eshtablised once, just use that connection in the subsequent requests instead on creating a new one.
         - Can also Fetch database data without API calls, directly in components.
+
+
+🔄 Different Ways to Redirect in Next.js
+
+    1. For internal navigation, use useRouter().push() or <Link>.
+    2. For external navigation, use window.location.href.
+    3. For automatic redirects, use redirect() inside a server component.
+    4. For server-side redirection, use an API route with res.writeHead().

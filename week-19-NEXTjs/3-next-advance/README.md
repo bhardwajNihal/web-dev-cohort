@@ -41,14 +41,19 @@
         - no useEfect,
         - logs will be made only on the terminal and not on the browser, as the data is fetched server side
 
-# Backend in Next js 
+## Backend in Next js 
     - Routes are defined in api/hello/route.js/ts file
     - in the specific routes we export methods like GET,POST, PUT, POST, etc.
     - we get inbuilt NextRequest and NextResponse objects.
     - params from the dynamic route are automatically passed as the 2nd argument to the function
 
+    # Environment variables, are automatically configured
+        - add .env file in the project root
+        - process.env.DB_URL 
 
-## Middleware in Nextjs
+    - 
+
+# Middleware in Nextjs
  > Middleware is simply the logic that runs before the actual request reaches a backend route handler.
  > In nextjs, Middleware : 
     - performs authentications to check if user is authorized before hitting a protected endpoint.
@@ -64,3 +69,4 @@
     4. Read/set cookies --> request.cookies.get() / response.cookies.set()
     5. Auth guard :	Check cookies or headers and redirect if unauthenticated
     6. A/B testing : Split traffic with rewrites or cookies
+
